@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.kodlamaio.business.abstracts.BrandService;
 import com.example.kodlamaio.business.requests.CreateBrandRequest;
 import com.example.kodlamaio.business.requests.UpdateBrandRequest;
-import com.example.kodlamaio.business.responses.GetAllBrandResponse;
+import com.example.kodlamaio.business.responses.GetAllBrandsResponse;
 import com.example.kodlamaio.business.responses.GetByIdBrandResponse;
 import com.example.kodlamaio.core.utilities.mappers.ModelMapperService;
 import com.example.kodlamaio.dataAccess.abstracts.BrandRepository;
@@ -23,14 +23,14 @@ public class BrandManager implements BrandService {
 	private ModelMapperService modelMapperService;
 
 	@Override
-	public List<GetAllBrandResponse> getAll() {
+	public List<GetAllBrandsResponse> getAll() {
 	
 		// mapping
 		List<Brand> brands = brandRepository.findAll();
 		
 
-		List<GetAllBrandResponse> brandsResponse = brands.stream()
-				.map(brand -> this.modelMapperService.forResponse().map(brand, GetAllBrandResponse.class))
+		List<GetAllBrandsResponse> brandsResponse = brands.stream()
+				.map(brand -> this.modelMapperService.forResponse().map(brand, GetAllBrandsResponse.class))
 				.collect(Collectors.toList());
 
 		return brandsResponse;

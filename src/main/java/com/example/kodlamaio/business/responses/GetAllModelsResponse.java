@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllBrandResponse {
-	
-	private int  id;
+public class GetAllModelsResponse {
+	private int id;
 	private String name;
-
+	private String brandName;
 }

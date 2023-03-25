@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.kodlamaio.business.abstracts.BrandService;
 import com.example.kodlamaio.business.requests.CreateBrandRequest;
 import com.example.kodlamaio.business.requests.UpdateBrandRequest;
-import com.example.kodlamaio.business.responses.GetAllBrandResponse;
+import com.example.kodlamaio.business.responses.GetAllBrandsResponse;
 import com.example.kodlamaio.business.responses.GetByIdBrandResponse;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -30,7 +30,7 @@ public class BrandsController {
     
 	
 	@GetMapping()
-	public List<GetAllBrandResponse> getAll(){
+	public List<GetAllBrandsResponse> getAll(){
 		return brandService.getAll();
 	}
 	
