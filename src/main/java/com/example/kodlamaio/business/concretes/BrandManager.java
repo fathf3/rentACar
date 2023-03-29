@@ -10,6 +10,7 @@ import com.example.kodlamaio.business.requests.CreateBrandRequest;
 import com.example.kodlamaio.business.requests.UpdateBrandRequest;
 import com.example.kodlamaio.business.responses.GetAllBrandsResponse;
 import com.example.kodlamaio.business.responses.GetByIdBrandResponse;
+import com.example.kodlamaio.business.rules.BrandBussniessRules;
 import com.example.kodlamaio.core.utilities.mappers.ModelMapperService;
 import com.example.kodlamaio.dataAccess.abstracts.BrandRepository;
 import com.example.kodlamaio.entities.concretes.Brand;
@@ -21,6 +22,7 @@ import lombok.AllArgsConstructor;
 public class BrandManager implements BrandService {
 	private BrandRepository brandRepository;
 	private ModelMapperService modelMapperService;
+	private BrandBussniessRules brandBussniessRules;
 
 	@Override
 	public List<GetAllBrandsResponse> getAll() {
@@ -39,9 +41,9 @@ public class BrandManager implements BrandService {
 	@Override
 	public void add(CreateBrandRequest createBrandRequest) {
 
-//		Brand brand=new Brand();
-//		brand.setName(createBrandRequest.getName());
 
+		
+		this.brandBussniessRules.checkIfBrandNameExists(createBrandRequest.getName());
 		Brand brand = this.modelMapperService.forRequest().map(createBrandRequest, Brand.class);
 
 		this.brandRepository.save(brand);

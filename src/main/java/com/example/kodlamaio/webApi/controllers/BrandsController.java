@@ -19,6 +19,7 @@ import com.example.kodlamaio.business.responses.GetAllBrandsResponse;
 import com.example.kodlamaio.business.responses.GetByIdBrandResponse;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -42,7 +43,7 @@ public class BrandsController {
 	
 	@PostMapping()
 	@ResponseStatus(code = HttpStatus.CREATED) // 
-		public void add(CreateBrandRequest createBrandRequest) {
+		public void add(@RequestBody @Valid CreateBrandRequest createBrandRequest) {
 			this.brandService.add(createBrandRequest);
 	}
 	
